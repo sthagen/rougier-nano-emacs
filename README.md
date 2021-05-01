@@ -19,6 +19,10 @@ configuration.
 <img src="./images/nano-emacs-dark.png"  width=47.5%>
 </div>
 
+Nano Emacs is quite close to my other project [Elegant
+Emacs](https://github.com/rougier/elegant-emacs) which might be
+considered to be an early prototype.
+
 ### Requirements
 
 You need a recent version of
@@ -134,8 +138,23 @@ modules.
 
 #### Experimental
 
+- **[nano-mu4e.el](./nano-mu4e.el)**
+
+  > This package setup the look and feel of mu4e.
+  
+  ![](./images/nano-mu4e.png)
+
 - **[nano-command.el](./nano-command.el)**
 
-  > This package provised an experimental command line prompt in the
+  > This package provides an experimental command line prompt in the
   > header line. It has not history nor completion but can be used for
   > one line input such as org-capture.
+
+  ![](./images/nano-command.png)
+
+### Related works
+
+- [Bespoke theme](https://github.com/mclear-tools/bespoke-themes)
+  Custom medium contrast light and dark themes inspired by nano emacs,
+  elegant emacs, Nord and Solarized themes.
+  
