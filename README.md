@@ -42,12 +42,56 @@ $ emacs -q -l nano.el
 
 ### Installation
 
-If you like the result, you can merge the content of [nano.el](nano.el) into
-your emacs configuration file. To do so,
-you'll need to modify the `load-path` to include the nano emacs
-repository and then call for the different modules. The only mandatory
-module is `nano-faces` that defines 6 faces that are used in other
-modules.
+If you like the result, you can either manually merge the contents of
+[nano.el](nano.el) into your emacs configuration file, or install nano
+through the [straight.el](https://github.com/raxod502/straight.el) package
+manager.
+
+#### Manual Installation
+To merge the [nano.el](nano.el) contents with your emacs configuration,
+you'll need to modify the `load-path` to include the nano emacs repository
+and then call for the different modules. The only mandatory module is
+`nano-faces` that defines 6 faces that are used in other modules.
+
+#### Installation through straight.el
+To install nano through [straight.el](https://github.com/raxod502/straight.el),
+install straight.el, and then add the following snippet into your emacs
+configuration:
+``` emacs-lisp
+(straight-use-package
+  '(nano-emacs :type git :host github :repo "rougier/nano-emacs"))
+```
+from here, you may either `(require 'nano)` to pull in the default nano
+configuration, or call for the different modules. The only mandatory module
+is `nano-faces` that defines 6 faces that are used in other modules.
+
+### Customization
+
+You can customize the default font, the proportional font and the font-size.
+
+```emacs-lisp
+(setq nano-font-family-monospaced "Roboto Mono")
+```
+
+This sets the default monospaced font. Defaults to Roboto Mono. Note that if you set this to a font without proper light or bold weights you will lose many of the key design features of nano-emacs.
+
+```emacs-lisp
+(setq nano-font-family-proportional nil)
+```
+
+Set this to the name (as a string) of your favorite variable-width font to enable `variable-width-mode` and `mixed-pitch-mode`. If you have already set this somewhere else, you can use `(setq nano-font-family-proportional (face-attribute 'variable-width :family))` to use the same one.
+
+```emacs-lisp
+(setq nano-font-size 14)
+```
+
+This sets the font-size of most faces in nano-emacs.
+
+#### Note about load-order
+
+Because of the way nano-emacs is set up, you need to set these variables *before* you call `(nano-faces)` and `(nano-theme)`. If you change one of these variables after load/calling `(nano-faces)` and `(nano-theme)`, you will need to call them again for these changes to take effect.
+
+
 
 ### Modules
 
@@ -144,6 +188,16 @@ modules.
   
   ![](./images/nano-mu4e.png)
 
+- **[nano-minibuffer.el](./nano-minibuffer.el)**
+
+  > Minibuffer using [mini-frame](https://github.com/muffinmad/emacs-mini-frame)
+  
+  <div>
+  <img src="./images/nano-minibuffer-light.png" width=47.5%>
+  <img src="./images/nano-minibuffer-dark.png"  width=47.5%>
+  </div>
+
+
 - **[nano-command.el](./nano-command.el)**
 
   > This package provides an experimental command line prompt in the
@@ -151,6 +205,15 @@ modules.
   > one line input such as org-capture.
 
   ![](./images/nano-command.png)
+
+
+- **[nano-agenda.el](./nano-agenda.el)**
+
+  > An experimental interactive mini agenda that displays side by
+  > side a mini calendar on the left and timestamped org entries on
+  > the right.
+  
+  ![](./images/nano-agenda.png)
 
 ### Related works
 
