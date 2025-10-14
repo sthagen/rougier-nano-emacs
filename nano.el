@@ -17,6 +17,11 @@
 ;; ---------------------------------------------------------------------
 (package-initialize)
 
+;; Add the path of the file being evaluated to `load-path'.
+(when (and (boundp 'load-path) load-file-name)
+  (add-to-list 'load-path
+               (file-name-as-directory (file-name-directory load-file-name))))
+
 ;; Default layout (optional)
 (require 'nano-layout)
 
